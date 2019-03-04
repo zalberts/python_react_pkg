@@ -1,0 +1,14 @@
+[run]
+omit = tests/*
+  hamerkop/_version.py
+
+[report]
+exclude_lines =
+  pragma: no cover
+
+  raise AssertionError
+  raise NotImplementedError
+  if 0:
+  if __name__ == .__main__.:
+
+ignore_errors = True

@@ -1,0 +1,6 @@
+include versioneer.py
+include python_react_pkg/_version.py
+include README.md
+include LICENSE
+recursive-include python_react_pkg/static *.js *.css *.svg *.png *.jpg *.eot *.tff *.woff *.woff2 *.map
+recursive-include python_react_pkg/templates *.html
