@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Grid, Row, Col } from "react-bootstrap";
 import { subscribeTopic, unsubscribeTopic } from './api';
+import axios from 'axios';
 
 var $ = require('jquery');
 
@@ -40,7 +41,13 @@ export default class Hello extends React.Component {
       console.log(data);
       this.personalizeGreeting(data);
     });
+    axios.get(window.location.href + 'hello').then((res) => {
+      console.log(res);
+      })
+      .catch() 
   }
+
+
 
   render () {
     return (

@@ -1,6 +1,7 @@
 from flask import Blueprint, request
 import logging
 from flask_socketio import emit
+import random
 
 from .. import socketio
 
@@ -17,6 +18,14 @@ logger = logging.getLogger(__name__)
 def test_route():
     print('test')
     return 'test'
+
+
+
+@api.route('/piedata')
+def test_route_2():
+    return {'data': [random.randint(30,100) for _ in range(3)]}
+
+
 
 
 @socketio.on('connect')

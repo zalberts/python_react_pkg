@@ -17,7 +17,8 @@ def main():
 
     conf = config.DevelopmentConfig if results.debug else config.BaseConfig
     app = create_app(conf)
-    socketio.run(app, host=host, port=port, debug=app.config['DEBUG'])
+    app.run(host=host,port=port)
+    #socketio.run(app, host=host, port=port, debug=app.config['DEBUG'])
 
 
 if __name__ == "__main__":
