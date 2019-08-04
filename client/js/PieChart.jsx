@@ -18,47 +18,42 @@ const a_colors=[
     "#74ee7e", 
     "#a345f0"];
 
-
-export default class PieChart extends React.Component {
-
-    buildLabels(num) {
-    let labels=[];
-    for (let i=0;i<num;i++) {
-      labels.push('Label '+i)
-    };
-    return labels;
-  }
-
-  buildBgColor(num) {
-    let colors=[];
-    for (let i=0;i<num;i++) {
-      colors.push( a_colors[i])
-    };
-    return colors;
-  }
-  buildHvColor(num) {
-    let colors=[];
-    for (let i=0;i<num;i++) {
-      colors.push('#afafaf')
-    };
-    return colors;
-  }
-
-  buildData(data_arr) {
-    return {
-        labels: this.buildLabels(data_arr.length),
-        datasets: [{
-          data: data_arr, 
-          backgroundColor:this.buildBgColor(data_arr.length),
-          hoverBackgroundColor:this.buildHvColor(data_arr.length)
-        }]
-    }
-  }
-
-  render() {
-      console.log(this.props.data);
+const PieChart = (props) => {
+    let buildLabels=(num)=>{
+        let labels=[];
+        for (let i=0;i<num;i++) {
+          labels.push('Label '+i)
+        };
+        return labels;
+      };
+    let buildBgColor = (num) => {
+        let colors=[];
+        for (let i=0;i<num;i++) {
+          colors.push( a_colors[i])
+        };
+        return colors;
+      };
+    let buildHvColor = (num) => {
+        let colors=[];
+        for (let i=0;i<num;i++) {
+          colors.push('#afafaf')
+        };
+        return colors;
+      };
+    let buildData = (data_arr) => {
+        return {
+            labels: buildLabels(data_arr.length),
+            datasets: [{
+              data: data_arr, 
+              backgroundColor:buildBgColor(data_arr.length),
+              hoverBackgroundColor:buildHvColor(data_arr.length)
+            }]
+        }
+      }
       return(
-          <Doughnut data={ this.buildData(this.props.data) } />
-      )
-  }
+        <Doughnut data={ buildData(props.data) } />
+    )
 };
+
+
+export default PieChart;
