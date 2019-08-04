@@ -24,12 +24,13 @@ def register_blueprints(app):
     app.register_blueprint(api)
 
 
-def create_app():
+def create_app(conf):
     app = Flask(
         __name__,
         static_folder='./static',
         template_folder='./templates',
     )
+    app.config.from_object(conf)
 
     register_extentions(app)
     register_blueprints(app)
