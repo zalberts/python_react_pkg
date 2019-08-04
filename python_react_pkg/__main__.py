@@ -1,5 +1,5 @@
-from . import create_app, socketio
-from . import config
+from python_react_pkg import create_app, socketio
+from python_react_pkg import config
 
 
 def main():

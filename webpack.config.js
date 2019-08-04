@@ -5,9 +5,9 @@ var MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const config = {
   entry: __dirname + '/client/js/index.jsx',
   output: {
-    path: __dirname + 'python_react_pkg/static/dist',
+    path: __dirname + '/python_react_pkg/static/dist',
     filename: 'bundle.js',
-    publicPath: '/static/dist'
+    publicPath: '/static/dist/'
   },
   resolve: {
     modules: [
