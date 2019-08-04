@@ -23,7 +23,8 @@ def test_route():
 
 @api.route('/piedata')
 def test_route_2():
-    return {'data': [random.randint(30,100) for _ in range(3)]}
+    num = int(request.args.get('data_points',3))
+    return {'data': [random.randint(30,100) for _ in range(num)]}
 
 
 

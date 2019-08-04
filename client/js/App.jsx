@@ -12,12 +12,19 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       data: [],
-      options: []
-      }
+      options: [],
+      num_data: 3
+      };
+      this.handleNumChange=this.handleNumChange.bind(this);
     }
+  
     
-  getNewData() {
-    axios.get(window.location.href + 'api/piedata')
+  getNewData(value) {
+    axios.get(window.location.href + 'api/piedata',{
+              params: {
+                data_points:value
+              }
+            })
       .then((res) => {
         //console.log(res);
         this.setState(res.data)
@@ -28,7 +35,7 @@ export default class App extends React.Component {
   }
 
   componentDidMount(){
-    this.getNewData();
+    this.getNewData(this.state.num_data);
   }
 
   addHeaderImg() {
@@ -36,9 +43,22 @@ export default class App extends React.Component {
     headerBg.src = HeaderBackgroundImage;
   }
 
+  handleNumChange (event) {
+    let val = event.target.value;
+    if (!isNaN( val ) && val<=15) {
+      this.setState({num_data: val });
+      if (val!="") {
+        this.getNewData(val);
+      }
+    }
+  }
+
   render () {
     return (
-          <PieChart data={this.state.data} />
+          <div>
+            <PieChart data={this.state.data} />
+            <input value={this.state.num_data} onChange={this.handleNumChange}/>
+          </div>
     );
   }
 }
